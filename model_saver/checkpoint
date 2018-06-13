@@ -1,0 +1,2 @@
+model_checkpoint_path: "C:\\Users\\asiaynrf\\Project\\model_saver\\my_model.ckpt"
+all_model_checkpoint_paths: "C:\\Users\\asiaynrf\\Project\\model_saver\\my_model.ckpt"
