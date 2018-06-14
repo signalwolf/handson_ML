@@ -1,3 +1,2 @@
 model_checkpoint_path: "C:\\Users\\asiaynrf\\Desktop\\fun\\handson_ML\\model_saver/curr_model.ckpt"
-all_model_checkpoint_paths: "C:\\Users\\asiaynrf\\Desktop\\fun\\handson_ML\\model_saver/curr_model"
 all_model_checkpoint_paths: "C:\\Users\\asiaynrf\\Desktop\\fun\\handson_ML\\model_saver/curr_model.ckpt"
