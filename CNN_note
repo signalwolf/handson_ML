@@ -1,0 +1,29 @@
+Q1: Padding in pooling layer
+
+"SAME" tries to pad evenly left and right, but if the amount of columns to be added is odd, it will add the extra column to the right, as is the case in this example (the same logic applies vertically: there may be an extra row of zeros at the bottom).
+
+Example: 
+configuration: 
+Input width = 13
+Filter width = 6
+Stride = 5
+
+"VALID" = without padding:
+
+
+   inputs:         1  2  3  4  5  6  7  8  9  10 11 (12 13)
+                |________________|            dropped
+                          |_________________|
+"SAME" = with zero padding:
+
+            pad|                           |pad
+   inputs:      0 |1  2  3  4  5  6  7  8  9  10 11 12 13|0  0
+            |_____0 - 5________|
+                       |____5 - 10_____|
+                                 |___10 -- 0____|
+                                             
+// 从这张图来看，pooling layer的padding尽可能的在两边加0，并且右边先，然后保证左右两边的0的数量尽可能的相同。
+
+
+Q2: Pooling layer's equation for stride, padding and kernal:
+
