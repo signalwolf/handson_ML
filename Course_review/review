@@ -1,0 +1,6 @@
+
+Chapter4: Training Models:
+1. Linear regression: y = a + bx1 + cx2 + dx4 ....
+    x1/2/3/4 called the features
+    y is the estimated result.
+    
