@@ -77,3 +77,6 @@ False Positive; 没病也没查出病的就是 True Negative
     2.  Recall: TP/(TP + PN)：查出来有病的人有多少是真的有病
 5.  F-score: F1 = 2 * (1/precision + 1/recall)
 6.  ROC Curve: used with binary classifiers. plot TP/FP
+
+#### Performance Measurement for linear regression:
+1.  learning curve, plot 在training set上和validation set上的RMSE. 
