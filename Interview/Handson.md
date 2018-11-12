@@ -15,7 +15,7 @@ and each attribute's type and number of non-null values
 3.  housing['a'].value_counts(): how many districts belongs to each category
 4.  housing.describe(): a summary of the numerical attributes
 
-#### Prepare the data for machine learning
+#### Prepare the data for machine learning 数据处理
 1.  Create a Test set:
 
 ```
@@ -32,7 +32,7 @@ def split_train_set(data, test_ratio):
 from sklearn.model_selection import train_test_split
 train_set, test_set = train_test_split(housing, test_size = 0.2, random_state = 42)
 ```
-2.  Data cleaning:
+2.  数据的处理
     1.  Deal with missing features: drop data one with missing feature; remove the feature completely;
     set the value to zero/mean/median
     ```
@@ -41,15 +41,66 @@ train_set, test_set = train_test_split(housing, test_size = 0.2, random_state = 
     median = housing['total_bedrooms'].median()
     housing['total_bedrooms'].fillna(median, inplace = True)
     ```
-    2.  Handling text and categorical attributes: convert those to numbers
-    one hot encoding (consider the original distance between two entities) or linear transfer (each one is independent)
-    
-    3.  Feature scaling:
+    2.  Handling text and categorical attributes/feature: convert those to numbers
+        1.  Most of machine learning algorithm needed to translate categorical feature to numbers. Only decision tree can accept string as an input.  
+        2.  Type of convert:
+            1.  One hot encoding (each entity is independent and no order):
+                1.  For example: Blood Type A, B, AB, O:
+                    1.  A --> [1, 0 ,0 ,0]
+                    2.  B --> [0, 1, 0, 0]
+                    3.  AB -> [0, 0, 1, 0]
+                    4.  O --> [0, 0, 0, 1]
+                2.  With one hot encoding, all input get an independent presentation. But cost too many space
+                3.  使用稀疏向量能够节省空间，并且大多数的算法都接受稀疏向量作为input
+                4.  或者使用降维的手段
+            2.  Ordinal Encoding (each one related and have order, like score A is better than B, B is better than C)
+            then 
+                1.  A --> 3
+                2.  B --> 2
+                3.  C --> 1
+            3.  Binary Encoding (使用二进制数来表示)：
+                1.  A --> [0, 0, 0, 1]
+                2.  B --> [0, 0, 1, 0]
+                3. AB --> [0, 1, 1, 0]
+                4.  O --> [1, 0, 0, 0]
+ 
+    3.  Feature scaling/Normalization: help to get to the best answer faster. Almost all dx based machine learning algorithm
+     need to use normalization. Others don't need, for example: decision tree/ naive bayes.
         1.  min_max scaling/ normalization; MinMaxScale
-        2.  standardization scaling (new data have zero mean and unit variance): StandardScaler
+        2.  standardization scaling/Zero Score normalization (new data have zero mean and unit variance): StandardScaler
     
     4.  Transformation Pipelines: custom the process steps and for future use.
     
+    5.  高维组合特征的处理：feature combine.
+        1.  当feature的取值有恩多的时候，两个feature 的组合便有 m * n 个组合，如果使用on hot encoding的话那么就会造成严重的问题。
+        所以需要降维来处理。例如购买物品是，用户ID 有千万个，物品ID也有千万个，而y就是用户是否点击，如果这样的话就造成了 m * n 的组合
+        而这个组合的结果是非常大的。
+        2.  故而我们将 feature combine, 我们的 X 中只记录： x1 = 用户ID = a 并点击了物品 ID == b 的情况。这样就删除了那些
+        data，例如用户A 没有点击物品 B的情况
+    
+    6. 文本表示模型：
+        1.  Bag of word: TF-IDF
+            1.  TF-IDF(t,d) = TF(t,d) * IDF(t):
+                1.  单词 t 在文档 d中出现的频率
+                2.  单词 t 在所有的文档中出现的次数的反比 = log(文章总数/(包含单词t的文章总数 + 1))
+        2.  N-gram: 考虑单词的前后连贯性，将 N 个单词作为一个 word t 来处理，这样也能得到一个结果。
+        2.  Topic model: 找到具有代表性的文章然后做词频统计
+        3.  World Embedding: Word2Vec: 最常用的词嵌入模型。
+    
+    7.  Word2Vec 是一种浅层神经网络，有两种网络结构：
+        1.  CBOW: continuous bog of words: 通过上下文来预测当前词的生成概率。即输入是上下文，输出是当前词
+        2.  Skip-gram: 根据当前的词来预测上下文中各词的生成概率。即输入是当前词，输出是当前词
+    
+    8.  图像处理中数据量不足的问题及解决方法：
+        1.  问题：过拟合
+        2.  解决方案：
+            1.  在模型上：简化模型，Regularization, 集成学习，dropout
+            2.  在数据上：Data Augmentation (图像的随机旋转，平移，缩放，裁剪)；对图像增加噪音扰动（高斯白噪声）
+            颜色变换，改变亮度、清晰度、对比度等。
+            3.  迁移学习 transfer learning: 用一个在大规模数据集上预训练好的通用模型做基础然后再针对现在的小的data进行微调。
+    9.  
+        
+        
 #### Select and train a Model:
 Better Evaluation using cross-validation:
 1.  Split the training set into a smaller training set and validation set.
