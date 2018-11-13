@@ -1,14 +1,14 @@
 # Machine learning models
-[Classification](#Classification)
-[Linear Regression](#Linear-Regression)
-[Polynomial Regression](#Polynomial-Regression)
-[Regularization](#Regularization)
-[Logistic Regression](#Logistic-Regression)
-[Softmax/Multinomial Logisitc Regression](Softmax/Multinomial-Logisitc-Regression)
-[SVM](#SVM)
-[SVM Regression](#SVM-Regression)
-[Decision Trees](#Decision-Trees)
-[Ensemble learning and random forests](#Ensemble-learning-and-random-forests)
+[Classification](#Classification)  
+[Linear Regression](#Linear-Regression)  
+[Polynomial Regression](#Polynomial-Regression)  
+[Regularization](#Regularization)   
+[Logistic Regression](#Logistic-Regression)   
+[Softmax/Multinomial Logisitc Regression](Softmax/Multinomial-Logisitc-Regression)  
+[SVM](#SVM)  
+[SVM Regression](#SVM-Regression)  
+[Decision Trees](#Decision-Trees)  
+[Ensemble learning and random forests](#Ensemble-learning-and-random-forests)  
 
 #### Classification:
 1.  binary classification: precision and recall
