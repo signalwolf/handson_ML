@@ -2,13 +2,14 @@
 [Classification](#Classification)  
 [Linear Regression](#Linear-Regression)  
 [Polynomial Regression](#Polynomial-Regression)  
-[Regularization](#Regularization)   
 [Logistic Regression](#Logistic-Regression)   
 [Softmax/Multinomial Logisitc Regression](Softmax/Multinomial-Logisitc-Regression)  
 [SVM](#SVM)  
 [SVM Regression](#SVM-Regression)  
 [Decision Trees](#Decision-Trees)  
-[Ensemble learning and random forests](#Ensemble-learning-and-random-forests)  
+[Ensemble learning and random forests](#Ensemble-learning-and-random-forests) 
+[Regularization](#Regularization)   
+ 
 
 #### Classification:
 1.  binary classification: precision and recall
@@ -35,15 +36,16 @@
 1.  Add powers of each feature as new features, then train a linear model on this extended set of features.
 2.  简单来说就是将feature 给 ** 2/3/4... 之后再做linear regression
  
-#### Regularization:
-1.  Ridge Regression: 加入weight的平方，L2 regularization.将入这个 regularization 后你的weight变得尽可能的小了。
-2.  Lasso Regression: 加入weight的绝对值，L1 regularization. 加入后，会使得结果倾向于清除掉不重要的feature，它类似于
-直接进行了feature selection并且倾向与得到一个sparse model
-3.  Early Stopping: 提早停止
-
 #### Logistic Regression:
 1.  用于计算input 属于某个特别的class的概率（两个class）
-
+2.  Logistic regression 与 linear regression 的区别与联系：
+    1.  区别：
+        1.  本质上logistic regression是处理分类问题，linear regression处理的是回归问题。
+        2.  逻辑回归的变量是离散的，而线性回归中的变量是连续的
+    2.  联系：
+        1.  两者都用了ML来对样本进行建模。
+        2.  两者都采用了梯度下降的方法
+        
 #### Softmax/Multinomial Logisitc Regression:
 1.  类似于logisitc regression, 只是它计算的是多个class的概率
 
@@ -62,3 +64,9 @@
 
 
 #### Ensemble learning and random forests:
+
+#### Regularization:
+1.  Ridge Regression: 加入weight的平方，L2 regularization.将入这个 regularization 后你的weight变得尽可能的小了。
+2.  Lasso Regression: 加入weight的绝对值，L1 regularization. 加入后，会使得结果倾向于清除掉不重要的feature，它类似于
+直接进行了feature selection并且倾向与得到一个sparse model
+3.  Early Stopping: 提早停止
