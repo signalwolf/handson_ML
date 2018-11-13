@@ -1,5 +1,7 @@
 ## 目录
 [Main Steps for machine learning](#Main-Steps-for-machine-learning)
+[Visualize the data](#Visualize-the-data)
+[Prepare the data for machine learning 数据处理](#Prepare-the-data-for-machine-learning-数据处理)
 
 ### Main Steps for machine learning:
 1.  Look at the big picture
@@ -11,14 +13,14 @@
 7.  Present your solution
 8.  Launch, monitor and maintain your system.
 
-#### Visualize the data
+### Visualize the data
 1.  housing.head(): get the top five rows's details
 2.  housing.info(): get a quick description of the data, in particular the total number of rows
 and each attribute's type and number of non-null values
 3.  housing['a'].value_counts(): how many districts belongs to each category
 4.  housing.describe(): a summary of the numerical attributes
 
-#### Prepare the data for machine learning 数据处理
+### Prepare the data for machine learning 数据处理
 1.  Create a Test set:
 
 ```
