@@ -1,7 +1,7 @@
 ## 目录
-[Main Steps for machine learning](#Main-Steps-for-machine-learning)
-[Visualize the data](#Visualize-the-data)
-[Prepare the data for machine learning 数据处理](#Prepare-the-data-for-machine-learning-数据处理)
+[Main Steps for machine learning](#Main-Steps-for-machine-learning)  
+[Visualize the data](#Visualize-the-data)  
+[Prepare the data for machine learning 数据处理](#Prepare-the-data-for-machine-learning-数据处理)  
 
 ### Main Steps for machine learning:
 1.  Look at the big picture
