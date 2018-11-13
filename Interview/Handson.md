@@ -4,7 +4,7 @@
 [Prepare the data for machine learning 数据处理](#Prepare-the-data-for-machine-learning-数据处理)  
 [Select and train a Model](#Select-and-train-a-Model)  
 [Fine Tune Your Model](#Fine-Tune-Your-Model)  
-[Performance Measurement for binary classification](#Performance-Measurement-for-binary-classification)  
+[Performance Measurement for binary classification，ROC不是很懂，需要细看](#Performance-Measurement-for-binary-classification)  
 [Performance Measurement for linear regression](#Performance-Measurement-for-linear-regression)  
 
 ### Main Steps for machine learning:
@@ -137,7 +137,11 @@ False Positive; 没病也没查出病的就是 True Negative
         2.  故而分类器需要在非常有把握的时候才去做判断，也因此Precision的提高会造成Recall的降低。
     2.  Recall: 召回率 TP/(TP + PN)：分类正确的正样本个数占真正的正样本个数的比例
         1.  换而言之：应该是对的的你判断出了多少
-5.  F-score: F1 = 2 * (1/precision + 1/recall)，即精准率和召回率的调和平均值
+7.  准确率：正确的样本数占样本总数的比例。 --> 当正负样本比例相差较大的时候，准确率并无太大用处，例如99%的数据都是正向的，
+那么如果我的模型预估所有人都是正向的，那么准确率也是 99%。此时可以选择在每个category下的准确率的平均来评判。
+8.  PR曲线：横轴Precision, 纵轴Recall.
+    1.  在下图中，当Recall很低时，modelA的performance肯定更好，相应的当recall很高时，modelB的performance更好。
+![image](https://github.com/signalwolf/handson_ML/blob/master/Interview/Image/Screen%20Shot%202018-11-12%20at%204.09.08%20PM.png)
 6.  ROC Curve: used with binary classifiers. 这是binary classification的最重要的指标：
     1.  ROC的意思是：Receiver Operating Characteristic Curve.
     2.  横坐标：False Positive Rate: FPR = FP/N. 
@@ -148,11 +152,13 @@ False Positive; 没病也没查出病的就是 True Negative
         2.  TP: 2; FP: 1; FN: 6; TN: 1;
         3.  TPR: TP/P = 2/3; FPR: FP/N = 1/7.
         4.  ROC图上的一点便由此画出：(2/3, 1/7)
-7.  准确率：正确的样本数占样本总数的比例。 --> 当正负样本比例相差较大的时候，准确率并无太大用处，例如99%的数据都是正向的，
-那么如果我的模型预估所有人都是正向的，那么准确率也是 99%。此时可以选择在每个category下的准确率的平均来评判。
-8.  PR曲线：横轴Precision, 纵轴Recall.
-    1.  在下图中，当Recall很低时，modelA的performance肯定更好，相应的当recall很高时，modelB的performance更好。
-![image](https://github.com/signalwolf/handson_ML/blob/master/Interview/Image/Screen%20Shot%202018-11-12%20at%204.09.08%20PM.png)
+        5.  ROC图上每个点所对应的是某个config下的FPR vs TPR, 例如说logsitic regression中我们设 0.5为 threshold,
+        那么在0.5的config下会有一个ROC的点，同样，threshold == 0.1时也会产生另一个点。
+    5.  使用ROC curve来判断性能：AUC: area under curve: 面积越大表示性能越好。其计算法非常简单，就是将曲线从0到1之间积分。得到的就是其面积
+    AUC越大表明分类器越是可能将真正的样本排在前面，分类器性能就更好。
+    6.  ROC curve与PR curve的对比：ROC curve有个明显的优势就是在正负样本比例增加后ROC curve不会改变但是PR曲线可能产生巨大的改变。
+    ![image](https://github.com/signalwolf/handson_ML/blob/master/Interview/Image/Screen%20Shot%202018-11-12%20at%206.28.48%20PM.png)
+5.  F-score: F1 = 2 * (1/precision + 1/recall)，即精准率和召回率的调和平均值
 
 
 #### Performance Measurement for linear regression:
