@@ -1,4 +1,7 @@
-#### Main Steps for machine learning:
+## 目录
+[Main Steps for machine learning](### Main Steps for machine learning)
+
+### Main Steps for machine learning:
 1.  Look at the big picture
 2.  Get the data
 3.  Discover and visualize the data to gain insights
@@ -113,9 +116,9 @@ Better Evaluation using cross-validation:
 1.  Grid Search: automatic try different combination of hyperparameter values using cross-validation.
 2.  Randomized Search: if the search space is very large, then you should use this model.
 
-#### Performance Measurement for classification
-1.  T/F: True or False 代表的是在预测的对不对，如果对就是True
-2.  P/N: Positive or Negative: 代表的是真正的分布情况中，它是否符合某条件。
+#### Performance Measurement for binary classification
+1.  T/F: True or False 代表的是在预测的情况。T:被分类器预测为正的个数，F:被分类器预测为负的个数
+2.  P/N: Positive or Negative: 代表的是真正的分布情况情况。T:真实的正样本的数量；N:真实的负样本的数量。
 例如医院检查是否患病，如果来人是病人的话，那就是 positive, 不是病了就是negative；医院可能检查出来了，然后检查出来有病的人
 只有一部分是真的有病，这部分人就是 True Positive, 相应的本来没病查出病了的就是 False Negative; 有病没查出来的就是
 False Positive; 没病也没查出病的就是 True Negative
@@ -129,11 +132,33 @@ False Positive; 没病也没查出病的就是 True Negative
     2.  Recall: 召回率 TP/(TP + PN)：分类正确的正样本个数占真正的正样本个数的比例
         1.  换而言之：应该是对的的你判断出了多少
 5.  F-score: F1 = 2 * (1/precision + 1/recall)，即精准率和召回率的调和平均值
-6.  ROC Curve: used with binary classifiers. plot TP/FP
+6.  ROC Curve: used with binary classifiers. 这是binary classification的最重要的指标：
+    1.  ROC的意思是：Receiver Operating Characteristic Curve.
+    2.  横坐标：False Positive Rate: FPR = FP/N. 
+    3.  纵坐标：True Positive Rate: TPR = TP/P
+    4.  例子：假如有10个疑似患者，7个没有病，3个真有病；然后检查结果表示三个有病的人中只有两个是有病；在余下的7个没有病
+    的人中发现有一个有病。故而：
+        1.  T: 3; F: 7; P: 3; N: 7;
+        2.  TP: 2; FP: 1; FN: 6; TN: 1;
+        3.  TPR: TP/P = 2/3; FPR: FP/N = 1/7.
+        4.  ROC图上的一点便由此画出：(2/3, 1/7)
 7.  准确率：正确的样本数占样本总数的比例。 --> 当正负样本比例相差较大的时候，准确率并无太大用处，例如99%的数据都是正向的，
 那么如果我的模型预估所有人都是正向的，那么准确率也是 99%。此时可以选择在每个category下的准确率的平均来评判。
 8.  PR曲线：横轴Precision, 纵轴Recall.
+    1.  在下图中，当Recall很低时，modelA的performance肯定更好，相应的当recall很高时，modelB的performance更好。
 ![image](https://github.com/signalwolf/handson_ML/blob/master/Interview/Image/Screen%20Shot%202018-11-12%20at%204.09.08%20PM.png)
+
 
 #### Performance Measurement for linear regression:
 1.  learning curve, plot 在training set上和validation set上的RMSE. 
+RMSE的公式：
+![image](https://github.com/signalwolf/handson_ML/blob/master/Interview/Image/Screen%20Shot%202018-11-12%20at%204.13.54%20PM.png)
+2.  从上面的公式中我们能看到RMSE有个巨大的问题，那就是对outlier的处理，如果有个巨大的outlier，那么使用了
+RMSE的模型在迭代后会更加的靠近那个outlier，而使得99%的data的错误率都提高了。处理方法有：
+    1.  认为这是噪声：清除掉
+    2.  提高建模方式，将离群点产生机制也加入
+    3.  找个更适合的指标来评估模型，如：MAPE: mean absolute present error:
+    它由于对距离进行了归一化，使得outlier的影响变小了
+![image](https://github.com/signalwolf/handson_ML/blob/master/Interview/Image/Screen%20Shot%202018-11-12%20at%204.22.05%20PM.png)
+3.  尽可能的使用多个指标对模型进行评估，这样能够看出当前的模型除了什么问题。例如MAPE很低而RMSE很高的话，就表明当前的模型对outlier的处理有严重的问题
+
