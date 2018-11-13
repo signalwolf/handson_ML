@@ -4,8 +4,8 @@
 [Prepare the data for machine learning 数据处理](#Prepare-the-data-for-machine-learning-数据处理)  
 [Select and train a Model](#Select-and-train-a-Model)  
 [Fine Tune Your Model](#Fine-Tune-Your-Model)  
-[Performance Measurement for binary classification](#Performance-Measurement-for-binary-classification)
-[Performance Measurement for linear regression](#Performance-Measurement-for-linear-regression)
+[Performance Measurement for binary classification](#Performance-Measurement-for-binary-classification)  
+[Performance Measurement for linear regression](#Performance-Measurement-for-linear-regression)  
 
 ### Main Steps for machine learning:
 1.  Look at the big picture
