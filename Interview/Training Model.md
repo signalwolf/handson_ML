@@ -52,6 +52,7 @@
 2.  SVM 非常sensitive于feature 的scale
 3.  通过增加 Kernal能够形成 NonLinear SVM classification.
 4.  **在空间上线性可分的两类点在SVM的超平面上投影一定是不可分的** 见下图：
+![image](https://github.com/signalwolf/handson_ML/blob/master/Interview/Image/Screen%20Shot%202018-11-13%20at%2011.55.54%20AM.png)
 
 
 #### SVM Regression:
