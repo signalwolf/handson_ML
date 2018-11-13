@@ -98,8 +98,7 @@ train_set, test_set = train_test_split(housing, test_size = 0.2, random_state = 
             2.  在数据上：Data Augmentation (图像的随机旋转，平移，缩放，裁剪)；对图像增加噪音扰动（高斯白噪声）
             颜色变换，改变亮度、清晰度、对比度等。
             3.  迁移学习 transfer learning: 用一个在大规模数据集上预训练好的通用模型做基础然后再针对现在的小的data进行微调。
-    9.  
-        
+   
         
 #### Select and train a Model:
 Better Evaluation using cross-validation:
@@ -124,10 +123,17 @@ False Positive; 没病也没查出病的就是 True Negative
     1.  [True Negative, False Positive] 
     2.  [False Negative, True Positive]
 4.  Precision and recall: 
-    1.  Precision: TP/(TP + FP): 有病的人中有多少被检查出来了
-    2.  Recall: TP/(TP + PN)：查出来有病的人有多少是真的有病
-5.  F-score: F1 = 2 * (1/precision + 1/recall)
+    1.  Precision: 精确率 TP/(TP + FP): 分类正确的正样本个数占分类器判定为正样本的样本个数的比例。
+        1.  换而言之：你判断对的话，有多少是对的，即你的判断有多准确
+        2.  故而分类器需要在非常有把握的时候才去做判断，也因此Precision的提高会造成Recall的降低。
+    2.  Recall: 召回率 TP/(TP + PN)：分类正确的正样本个数占真正的正样本个数的比例
+        1.  换而言之：应该是对的的你判断出了多少
+5.  F-score: F1 = 2 * (1/precision + 1/recall)，即精准率和召回率的调和平均值
 6.  ROC Curve: used with binary classifiers. plot TP/FP
+7.  准确率：正确的样本数占样本总数的比例。 --> 当正负样本比例相差较大的时候，准确率并无太大用处，例如99%的数据都是正向的，
+那么如果我的模型预估所有人都是正向的，那么准确率也是 99%。此时可以选择在每个category下的准确率的平均来评判。
+8.  PR曲线：横轴Precision, 纵轴Recall.
+![image](https://github.com/signalwolf/handson_ML/blob/master/Interview/Image/Screen%20Shot%202018-11-12%20at%204.09.08%20PM.png)
 
 #### Performance Measurement for linear regression:
 1.  learning curve, plot 在training set上和validation set上的RMSE. 
