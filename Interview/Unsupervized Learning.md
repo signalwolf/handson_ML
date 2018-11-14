@@ -1,5 +1,5 @@
 #非监督学习
-[K均值聚类](#K均值聚类)  
+[K均值聚类](#K均值聚类)
 [高斯混合模型](#高斯混合模型)
 [聚类算法的评估](#聚类算法的评估)
 
@@ -57,5 +57,5 @@
 ![image](https://github.com/signalwolf/handson_ML/blob/master/Interview/Image/Screen%20Shot%202018-11-13%20at%208.33.41%20PM.png)
             1.  下面的方程相当于 P * (N - K). P 代表数据的维度。其实就是归一化的簇距离。它只考虑了到本簇中心的距离
         3.  R-Square: 聚类的差异度：
-![image](https://github.com/signalwolf/handson_ML/blob/master/Interview/Image/Screen%20Shot%202018-11-13%20at%208.33.57%20PM.png)
+![image](https://github.com/signalwolf/handson_ML/blob/master/Interview/Image/Screen%20Shot%202018-11-13%20at%208.33.57%20PM.png)  
             |x-c|**2 代表的是如果只分一簇（也就是不分）的话的loss，另一个就是当前分法的loss，故而这个式子计算的是相比于不分所带来的gain
