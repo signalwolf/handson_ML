@@ -46,16 +46,16 @@
         3.  如果样本的随机性比较大的话，那么Xn之和会非常的接近Yn; 反之，Yn 应当远大于 Xn.
         4.  计算方式，当值接近于 0.5时认为随机性比较大；反之认为数据有趋势
 ![image](https://github.com/signalwolf/handson_ML/blob/master/Interview/Image/Screen%20Shot%202018-11-13%20at%208.33.16%20PM.png)  
-    2.  判断数据簇数：
-        1.  利用手肘法找到最合适的K值
-    3.  判断聚类的质量：
-        1.  轮廓系数：对于给定的某点，其轮廓系数为：
+    2.  判断数据簇数：＜/br＞
+        1.  利用手肘法找到最合适的K值＜/br＞
+    3.  判断聚类的质量：＜/br＞
+        1.  轮廓系数：对于给定的某点，其轮廓系数为：＜/br＞
 ![image](https://github.com/signalwolf/handson_ML/blob/master/Interview/Image/Screen%20Shot%202018-11-13%20at%208.33.33%20PM.png)  
-            1.  a(p)是p到本簇其他点之间的平均距离（本簇的紧凑程度）；b(p)是p到不同簇的最小平均距离（到邻近簇的分离程度）。
-            2.  因此这样计算了聚类的质量是不是好（本簇紧凑而且离邻近簇比较远），average所有的点后就可以计算出聚类的效果了
-        2.  RMSSTD: 均方根标准偏差
+            1.  a(p)是p到本簇其他点之间的平均距离（本簇的紧凑程度）；b(p)是p到不同簇的最小平均距离（到邻近簇的分离程度）。＜/br＞
+            2.  因此这样计算了聚类的质量是不是好（本簇紧凑而且离邻近簇比较远），average所有的点后就可以计算出聚类的效果了＜/br＞
+        2.  RMSSTD: 均方根标准偏差＜/br＞
 ![image](https://github.com/signalwolf/handson_ML/blob/master/Interview/Image/Screen%20Shot%202018-11-13%20at%208.33.41%20PM.png)  
-            1.  下面的方程相当于 P * (N - K). P 代表数据的维度。其实就是归一化的簇距离。它只考虑了到本簇中心的距离
-        3.  R-Square: 聚类的差异度：
+            1.  下面的方程相当于 P * (N - K). P 代表数据的维度。其实就是归一化的簇距离。它只考虑了到本簇中心的距离＜/br＞
+        3.  R-Square: 聚类的差异度：＜/br＞
 ![image](https://github.com/signalwolf/handson_ML/blob/master/Interview/Image/Screen%20Shot%202018-11-13%20at%208.33.57%20PM.png)    
-            |x-c|**2 代表的是如果只分一簇（也就是不分）的话的loss，另一个就是当前分法的loss，故而这个式子计算的是相比于不分所带来的gain
+            |x-c|**2 代表的是如果只分一簇（也就是不分）的话的loss，另一个就是当前分法的loss，故而这个式子计算的是相比于不分所带来的gain＜/br＞
