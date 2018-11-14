@@ -19,19 +19,24 @@
 4.  Multioutput classification: 
 
 #### Linear Regression:
-1.  Norm equation: too much computation power since it have matrix multiply, take O(n3) but it can give the global minimum.
+1.  Norm equation/Ridge Regression: too much computation power since it have matrix multiply, take O(n3) but it can give the global minimum.
     1.  More specified: O(m*n2 + n3), very sensitive to feature numbers. 
     2.  好处是一次到位，直接得到最小点的位置并进行处理
+    3.  注意的是它只存在于凸函数中
 2.  Gradient Descent: 三种方法，batch, stochastic, mini batch
     1.  Batch Gradient Descent: calculate the derivative based on whole data set. O(kmn)
         1. k is the number of iterations.
         2. m is the number of data
         3. n is the number of features
-        4. Stable but slow
+        4. Stable but slow，保证每次下山都是在向下山的方向走动
     2.  Stochastic Gradient Descent: calculate the derivative base on one data in data set. O(kn)
         1.  Faster but not stable
     3.  Mini Batch: calculate the derivative based on part of data set
         1.  middle performance. Most people will choice this one.
+        2.  需要调整并选择参数：
+            1.  Mini Batch的size: M: M == 2 ** sth. 一般为32，64，128，256等
+        3.  需要对数据进行随机编号并且sort.
+        4.  由于每次只选择了一部分数据，因此下山的时候只是稍微感觉一下，很可能不是全局的下山方向。也因此在最后无法收敛。
         
 #### Polynomial Regression:
 1.  Add powers of each feature as new features, then train a linear model on this extended set of features.
@@ -101,8 +106,16 @@
 #### Regularization:
 1.  Ridge Regression: 加入weight的平方，L2 regularization.将入这个 regularization 后你的weight变得尽可能的小了。
 2.  Lasso Regression: 加入weight的绝对值，L1 regularization. 加入后，会使得结果倾向于清除掉不重要的feature，它类似于
-直接进行了feature selection并且倾向与得到一个sparse model
+直接进行了feature selection并且倾向与得到一个sparse model. 
+    1.  原理：
 3.  Early Stopping: 提早停止
+
+#### optimization for gradient decent:
+1.  优化的主要陷阱：
+    1.  山谷地：每次update的方向与需要前进的方向有较大的角度，导致了向前进的速度不够
+    2.  马鞍地形：平原地带导致的update非常缓慢，
+2.  Momentum:
+3.  Adam:
 
 #### 降维：
 1.  PCA: Principle Component Analysis: 无监督的降维算法
